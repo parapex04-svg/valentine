@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* NAVIGATION */
+  /* =======================
+     NAVIGATION
+  ======================= */
   window.goToProposal = function () {
     window.location.href = "proposal.html";
   };
@@ -9,7 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "quiz.html";
   };
 
-  /* FLOATING HEARTS */
+  /* =======================
+     FLOATING HEARTS
+  ======================= */
   const heartsContainer = document.querySelector(".hearts");
 
   if (heartsContainer) {
@@ -24,13 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       heartsContainer.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 14000);
+      setTimeout(() => {
+        heart.remove();
+      }, 14000);
     }
 
     setInterval(createHeart, 800);
   }
 
-  /* QUIZ LOGIC */
+  /* =======================
+     QUIZ LOGIC
+  ======================= */
   const questionEl = document.getElementById("question");
   const optionsEl = document.getElementById("options");
   const feedbackEl = document.getElementById("feedback");
@@ -69,34 +77,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-  function checkAnswer(index) {
-  const buttons = optionsEl.querySelectorAll("button");
+    function checkAnswer(index) {
+      const buttons = optionsEl.querySelectorAll("button");
 
-  if (index === quizData[currentQuestion].correct) {
-    buttons[index].classList.add("correct");
+      if (index === quizData[currentQuestion].correct) {
+        buttons[index].classList.add("correct");
 
-    setTimeout(() => {
-      currentQuestion++;
-      if (currentQuestion < quizData.length) {
-        loadQuestion();
+        setTimeout(() => {
+          currentQuestion++;
+          if (currentQuestion < quizData.length) {
+            loadQuestion();
+          } else {
+            window.location.href = "note1.html";
+          }
+        }, 700);
+
       } else {
-        window.location.href = "note1.html";
+        buttons[index].classList.add("wrong");
+        feedbackEl.innerText = "Hmm… think again 😌";
+
+        setTimeout(() => {
+          buttons[index].classList.remove("wrong");
+        }, 400);
       }
-    }, 700);
-
-  } else {
-    buttons[index].classList.add("wrong");
-    feedbackEl.innerText = "Hmm… think again 😌";
-
-    setTimeout(() => {
-      buttons[index].classList.remove("wrong");
-    }, 400);
-  }
-}
-
+    }
 
     loadQuestion();
   }
 
 });
-

@@ -1,8 +1,13 @@
+/* NAVIGATION */
 function goToProposal() {
   window.location.href = "proposal.html";
 }
 
-/* HEART ANIMATION */
+function goToQuiz() {
+  window.location.href = "quiz.html";
+}
+
+/* FLOATING HEARTS */
 const heartsContainer = document.querySelector(".hearts");
 
 function createHeart() {
@@ -22,3 +27,15 @@ function createHeart() {
 }
 
 setInterval(createHeart, 800);
+
+/* NO BUTTON ESCAPE 😈 */
+const noBtn = document.getElementById("noBtn");
+
+if (noBtn) {
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
+

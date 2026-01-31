@@ -7,7 +7,7 @@ function goToQuiz() {
   window.location.href = "quiz.html";
 }
 
-/* FLOATING HEARTS */
+/* HEARTS */
 const heartsContainer = document.querySelector(".hearts");
 
 function createHeart() {
@@ -21,21 +21,62 @@ function createHeart() {
 
   heartsContainer.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 14000);
+  setTimeout(() => heart.remove(), 14000);
 }
 
 setInterval(createHeart, 800);
 
-/* NO BUTTON ESCAPE 😈 */
-const noBtn = document.getElementById("noBtn");
+/* QUIZ LOGIC */
+const quizData = [
+  {
+    question: "What did I propose to you with on our first Valentine’s Day together?",
+    options: ["A rose 🌹", "A letter 💌", "A cheesecake 🍰", "Nothing"],
+    correct: 2
+  },
+  {
+    question: "Which animal best describes you?",
+    options: ["Otter 🦦", "Penguin 🐧", "Swan 🦢", "Billei 💖"],
+    correct: 3
+  },
+  {
+    question: "Who is my favorite person in the world?",
+    options: ["Rupa", "Anannya", "Billeimon", "All of the above 💕"],
+    correct: 3
+  }
+];
 
-if (noBtn) {
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+let currentQuestion = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const feedbackEl = document.getElementById("feedback");
+
+function loadQuestion() {
+  feedbackEl.innerText = "";
+  questionEl.innerText = quizData[currentQuestion].question;
+  optionsEl.innerHTML = "";
+
+  quizData[currentQuestion].options.forEach((option, index) => {
+    const btn = document.createElement("button");
+    btn.innerText = option;
+    btn.onclick = () => checkAnswer(index);
+    optionsEl.appendChild(btn);
   });
 }
 
+function checkAnswer(index) {
+  if (index === quizData[currentQuestion].correct) {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+      loadQuestion();
+    } else {
+      window.location.href = "note1.html";
+    }
+  } else {
+    feedbackEl.innerText = "Hmm… think again 😌";
+  }
+}
+
+if (questionEl) {
+  loadQuestion();
+}

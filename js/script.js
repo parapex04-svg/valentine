@@ -3,9 +3,7 @@ function goToProposal() {
 }
 
 /* HEART ANIMATION */
-const heartsContainer = document.createElement("div");
-heartsContainer.className = "hearts";
-document.body.appendChild(heartsContainer);
+const heartsContainer = document.querySelector(".hearts");
 
 function createHeart() {
   const heart = document.createElement("div");
@@ -13,14 +11,14 @@ function createHeart() {
   heart.innerText = "❤️";
 
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-  heart.style.fontSize = (16 + Math.random() * 14) + "px";
+  heart.style.animationDuration = (10 + Math.random() * 4) + "s";
+  heart.style.fontSize = (14 + Math.random() * 10) + "px";
 
   heartsContainer.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 7000);
+  }, 14000);
 }
 
-setInterval(createHeart, 500);
+setInterval(createHeart, 800);

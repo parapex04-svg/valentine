@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "note2.html";
   };
 
+  window.goToGallery2 = function () {
+    window.location.href = "gallery2.html";
+  };
+
+
 
   /* =======================
      FLOATING HEARTS

@@ -114,3 +114,29 @@ body {
   background: linear-gradient(135deg, #adb5bd, #ced4da);
   box-shadow: none;
 }
+/* QUIZ */
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+#options button {
+  padding: 10px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffe0e9, #ffd6e0);
+  font-size: 15px;
+}
+
+#options button:hover {
+  background: linear-gradient(135deg, #ffb7c5, #ffd1dc);
+}
+
+#feedback {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #e63950;
+}

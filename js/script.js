@@ -11,6 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "quiz.html";
   };
 
+  window.goToGallery1 = function () {
+    window.location.href = "gallery1.html";
+  };
+
+  window.goToNote2 = function () {
+    window.location.href = "note2.html";
+  };
+
+
   /* =======================
      FLOATING HEARTS
   ======================= */

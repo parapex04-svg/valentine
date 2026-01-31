@@ -1,10 +1,14 @@
-/* BASE */
+/* =======================
+   BASE
+======================= */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
-/* PAGE BACKGROUND */
+/* =======================
+   PAGE BACKGROUND
+======================= */
 .center-page {
   height: 100vh;
   background:
@@ -15,7 +19,9 @@ body {
   align-items: center;
 }
 
-/* LETTER CARD */
+/* =======================
+   LETTER / CARD
+======================= */
 .card {
   background: #ffffff;
   padding: 45px;
@@ -39,7 +45,9 @@ body {
   font-size: 18px;
 }
 
-/* BUTTON */
+/* =======================
+   BUTTON (GENERAL)
+======================= */
 .card button {
   margin-top: 35px;
   padding: 12px 28px;
@@ -58,7 +66,57 @@ body {
   box-shadow: 0 12px 25px rgba(255,77,109,0.6);
 }
 
-/* FLOATING HEARTS */
+/* =======================
+   YES / NO BUTTON LAYOUT
+======================= */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#noBtn {
+  background: linear-gradient(135deg, #adb5bd, #ced4da);
+  color: #333;
+  box-shadow: none;
+}
+
+/* =======================
+   QUIZ
+======================= */
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+#options button {
+  padding: 12px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffe0e9, #ffd6e0);
+  font-size: 15px;
+  color: #4a2c2a;   /* readable dark romantic tone */
+  font-weight: 500;
+}
+
+#options button:hover {
+  background: linear-gradient(135deg, #ffb7c5, #ffd1dc);
+  color: #3a1f1d;
+}
+
+#feedback {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #e63950;
+}
+
+/* =======================
+   FLOATING HEARTS
+======================= */
 .hearts {
   position: fixed;
   top: 0;
@@ -79,7 +137,9 @@ body {
   filter: blur(0.2px);
 }
 
-/* ANIMATIONS */
+/* =======================
+   ANIMATIONS
+======================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -101,42 +161,35 @@ body {
     opacity: 0;
   }
 }
+/* =======================
+   QUIZ FEEDBACK EFFECTS
+======================= */
 
-/* YES / NO BUTTON LAYOUT */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-#noBtn {
-  background: linear-gradient(135deg, #adb5bd, #ced4da);
-  box-shadow: none;
-}
-/* QUIZ */
-#options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 25px;
+/* Correct answer glow */
+.correct {
+  background: linear-gradient(135deg, #b7f7c1, #8eeaa1) !important;
+  color: #14532d !important;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.7);
+  animation: pop 0.3s ease;
 }
 
-#options button {
-  padding: 10px;
-  border-radius: 18px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #ffe0e9, #ffd6e0);
-  font-size: 15px;
+/* Wrong answer shake */
+.wrong {
+  animation: shake 0.4s ease;
 }
 
-#options button:hover {
-  background: linear-gradient(135deg, #ffb7c5, #ffd1dc);
+/* Animations */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
 }
 
-#feedback {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #e63950;
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
+

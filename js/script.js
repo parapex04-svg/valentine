@@ -69,18 +69,31 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    function checkAnswer(index) {
-      if (index === quizData[currentQuestion].correct) {
-        currentQuestion++;
-        if (currentQuestion < quizData.length) {
-          loadQuestion();
-        } else {
-          window.location.href = "note1.html";
-        }
+  function checkAnswer(index) {
+  const buttons = optionsEl.querySelectorAll("button");
+
+  if (index === quizData[currentQuestion].correct) {
+    buttons[index].classList.add("correct");
+
+    setTimeout(() => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
       } else {
-        feedbackEl.innerText = "Hmm… think again 😌";
+        window.location.href = "note1.html";
       }
-    }
+    }, 700);
+
+  } else {
+    buttons[index].classList.add("wrong");
+    feedbackEl.innerText = "Hmm… think again 😌";
+
+    setTimeout(() => {
+      buttons[index].classList.remove("wrong");
+    }, 400);
+  }
+}
+
 
     loadQuestion();
   }

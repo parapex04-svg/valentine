@@ -1,56 +1,36 @@
-body {
-  margin: 0;
-  font-family: 'Georgia', serif;
+/* FLOATING HEARTS */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.center-page {
-  height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
 }
 
-.card {
-  background: white;
-  padding: 40px;
-  width: 320px;
-  text-align: center;
-  border-radius: 18px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 1.5s ease;
-}
-
-.card h2 {
-  margin-bottom: 20px;
-}
-
-.card p {
-  font-size: 18px;
-}
-
-.card button {
-  margin-top: 30px;
-  padding: 10px 24px;
-  border: none;
-  border-radius: 20px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.card button:hover {
-  background: #e63950;
-}
-
-@keyframes fadeIn {
+@keyframes floatUp {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(0);
+    opacity: 1;
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-110vh);
+    opacity: 0;
   }
 }
+
+/* Make sure cards stay above hearts */
+.card {
+  position: relative;
+  z-index: 2;
+

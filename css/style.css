@@ -25,7 +25,7 @@ body {
 .card {
   background: #ffffff;
   padding: 45px;
-  width: 340px;
+  width: 380px;
   text-align: center;
   border-radius: 22px;
   box-shadow:
@@ -195,18 +195,38 @@ body {
 /* =======================
    PHOTO GALLERY
 ======================= */
+/* =======================
+   PHOTO GALLERY (POLISHED)
+======================= */
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 25px;
+  gap: 18px;
+  margin: 10px auto 30px;
+  max-width: 300px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 14px;
+  height: 180px;
   object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 1.2s ease;
 }
+
+/* Make the last photo centered (5th image) */
+.gallery img:nth-child(5) {
+  grid-column: span 2;
+  height: 220px;
+}
+
+/* Soft hover effect */
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.25);
+}
+
 
 
